@@ -1,11 +1,14 @@
 package com.love.network.data.entity;
 
+import org.greenrobot.greendao.annotation.Entity;
+
 import java.util.Date;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by lixinxin on 2016/10/28.
  */
-
+@Entity()
 public class Meizhi extends BaseEntity{
 
     private String url;
@@ -18,6 +21,26 @@ public class Meizhi extends BaseEntity{
     private Date publishedAt;
     private int imageWidth;
     private int imageHeight;
+
+    @Generated(hash = 274008258)
+    public Meizhi(String url, String type, String desc, String who, boolean used,
+            Date createdAt, Date updatedAt, Date publishedAt, int imageWidth,
+            int imageHeight) {
+        this.url = url;
+        this.type = type;
+        this.desc = desc;
+        this.who = who;
+        this.used = used;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.publishedAt = publishedAt;
+        this.imageWidth = imageWidth;
+        this.imageHeight = imageHeight;
+    }
+
+    @Generated(hash = 846466209)
+    public Meizhi() {
+    }
 
     public String getUrl() {
         return url;
@@ -97,5 +120,9 @@ public class Meizhi extends BaseEntity{
 
     public void setImageHeight(int imageHeight) {
         this.imageHeight = imageHeight;
+    }
+
+    public boolean getUsed() {
+        return this.used;
     }
 }
