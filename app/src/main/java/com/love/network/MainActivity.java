@@ -1,12 +1,17 @@
 package com.love.network;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.love.network.activity.GreenDaoActivity;
 import com.love.network.data.MeizhiData;
+import com.love.network.data.db.DBManager;
+import com.love.network.data.entity.UserEntity;
+import com.love.network.data.greendao.UserEntityDao;
 import com.love.network.network.Api;
 
 import butterknife.BindView;
@@ -18,11 +23,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @BindView(R.id.green_dao)
     public Button btnGreenDao;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        UserEntityDao userEntityDao = DBManager.getInstance(this).getDaoSession().getUserEntityDao();
+
+        UserEntity userEntity=new UserEntity();
+        userEntity.setId(0L);
+        userEntity.setUserName("lixinxin");
+        userEntity.setAge(100);
+        userEntityDao.insertOrReplace(userEntity);
+
 
         initEvent();
 
@@ -55,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.green_dao:
-
+                startActivity(new Intent(this, GreenDaoActivity.class));
                 break;
 
         }
