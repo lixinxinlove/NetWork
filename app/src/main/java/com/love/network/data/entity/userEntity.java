@@ -10,16 +10,37 @@ import org.greenrobot.greendao.annotation.Generated;
 @Entity()
 public class UserEntity extends BaseEntity {
 
-    @Id
+    @Id(autoincrement = true)
+    private Long _id;
     private Long id;
     private String userName;
     private int age;
 
-    @Generated(hash = 685203964)
-    public UserEntity(Long id, String userName, int age) {
+    private String work;
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work;
+    }
+
+    public Long get_id() {
+        return _id;
+    }
+
+    public void set_id(Long _id) {
+        this._id = _id;
+    }
+
+    @Generated(hash = 1273145555)
+    public UserEntity(Long _id, Long id, String userName, int age, String work) {
+        this._id = _id;
         this.id = id;
         this.userName = userName;
         this.age = age;
+        this.work = work;
     }
 
     @Generated(hash = 1433178141)

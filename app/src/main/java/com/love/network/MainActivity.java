@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.love.network.activity.GreenDaoActivity;
+import com.love.network.activity.MPAndroidChartActivity;
 import com.love.network.data.MeizhiData;
 import com.love.network.data.db.DBManager;
 import com.love.network.data.entity.UserEntity;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public Button btnGreenDao;
 
 
+    @BindView(R.id.mapc)
+    public Button btnMapc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void initEvent() {
         btnGreenDao.setOnClickListener(this);
+        btnMapc.setOnClickListener(this);
     }
 
 
@@ -72,6 +76,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId()) {
             case R.id.green_dao:
                 startActivity(new Intent(this, GreenDaoActivity.class));
+                break;
+            case R.id.mapc:
+                startActivity(new Intent(this, MPAndroidChartActivity.class));
                 break;
 
         }
