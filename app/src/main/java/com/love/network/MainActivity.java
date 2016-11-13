@@ -1,5 +1,6 @@
 package com.love.network;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 
 import com.love.network.activity.GreenDaoActivity;
 import com.love.network.activity.MPAndroidChartActivity;
+import com.love.network.appwidget.LeeProgressLoading;
 import com.love.network.data.MeizhiData;
 import com.love.network.data.db.DBManager;
 import com.love.network.data.entity.UserEntity;
@@ -41,6 +43,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         userEntity.setUserName("lixinxin");
         userEntity.setAge(100);
         userEntityDao.insertOrReplace(userEntity);
+
+
+        LeeProgressLoading.show(this, "", true, new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialog) {
+                LeeProgressLoading.hideDialog();
+            }
+        });
 
 
         initEvent();
